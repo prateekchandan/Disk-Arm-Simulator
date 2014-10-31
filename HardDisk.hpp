@@ -1,0 +1,7 @@
+class HardDisk
+{
+public:
+	HardDisk();
+	
+	
+};
