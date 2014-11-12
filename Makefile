@@ -1,8 +1,8 @@
 CPPFLAGS=-I/usr/local/include
 
 BIN2=simulator
-SRCS2=main.cpp DiskController.cpp Cache.cpp HardDisk.cpp
-INCLUDES=DiskController.hpp Cache.hpp HardDisk.hpp
+SRCS2=main.cpp DiskController.cpp Cache.cpp HardDisk.cpp Platter.cpp Sector.cpp Track.cpp pflayer/pflayer.o
+INCLUDES=DiskController.hpp Cache.hpp HardDisk.hpp Platter.hpp Sector.hpp Track.hpp pflayer/pf.h
 
 all: $(BIN2)
 

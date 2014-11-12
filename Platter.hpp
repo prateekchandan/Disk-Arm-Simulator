@@ -1,0 +1,6 @@
+class Platter{
+
+
+public:
+	Platter();
+};

@@ -1,8 +1,8 @@
-#include "DiskController.hpp"
+#include "Sector.hpp"
 
 using namespace std;
 int main(int argc, char const *argv[])
 {
-	DiskController disk;
+	Sector disk;
 	return 0;
 }
