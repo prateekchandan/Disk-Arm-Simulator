@@ -1,11 +1,14 @@
 #include "pflayer/pf.h"
 #include <cstring>
-class Sector
+#include "Statistics.hpp"
+struct Sector
 {
 	int sector_no;
 	int size;
 	char filename[100];
 	char * data;
+
+	Statistics * stats;
 public:
 	//Sector(){
 		//PF_Init();
@@ -14,7 +17,7 @@ public:
 	//}
 	
 	Sector();
-	Sector(int);
+	Sector(int, Statistics *);
 
 	void writefile();
 

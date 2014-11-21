@@ -3,7 +3,6 @@
 #include <cstdio>
 using namespace std;
 
-using namespace std;
 int main(int argc, char const *argv[])
 {
 	HardDisk h;
@@ -15,5 +14,9 @@ int main(int argc, char const *argv[])
 	h.read_data(data1, 0, 0, 0);
 	for(int i = 0; i < 512; i++) cout << data1[i];
 	cout << endl;
+	h.stats->print_stats();
+
 	return 0;
+
+
 }

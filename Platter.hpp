@@ -1,6 +1,6 @@
 #include "Track.hpp"
 
-class Platter{
+struct Platter{
 	// Platter number
 	int platter_no;
 
@@ -10,10 +10,13 @@ class Platter{
 	// List of Tracks in the Platter
 	Track * tracks;
 
+	// Statistics object
+	Statistics * stats;
+
 
 public:
 	Platter();
-	Platter(int);
+	Platter(int, Statistics *);
 
 	bool write_data(char *, int, int);
 

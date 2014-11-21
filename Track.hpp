@@ -1,6 +1,6 @@
 #include "Sector.hpp"
 
-class Track{
+struct Track{
 	// Track number
 	int track_no;
 
@@ -10,11 +10,15 @@ class Track{
 	// List of Sectors in the Track
 	Sector * sectors;
 
+	// Statistics object
+	Statistics * stats;
+
 
 public:
 	Track();
-	Track(int);
+	Track(int, Statistics *);
 
 	bool write_data(char *, int);
 	bool read_data(char *, int);
+
 };
