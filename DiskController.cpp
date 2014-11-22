@@ -4,5 +4,5 @@
 using namespace std;
 
 DiskController::DiskController(){
-	cout<<"DiskController created\n";
+	cout<<DISK_SIZE<<endl;
 }
