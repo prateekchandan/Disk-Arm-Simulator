@@ -5,3 +5,4 @@
 #define NO_SECTORS_MIN 101
 #define NO_SECTORS_MAX 200
 #define DATA_SIZE 512
+#define TOTAL_DISK 4

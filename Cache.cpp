@@ -17,7 +17,6 @@ bool Cache::read(long long address,char data_incoming[DATA_SIZE]){
 	for (int i = 0; i < CACHE_SIZE; ++i)
 	{
 		if(valid[i] && addr[i]==address){
-			cout<<data[i];
 			data_incoming=data[i];
 			return true;
 		}
