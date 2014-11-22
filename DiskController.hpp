@@ -11,6 +11,6 @@ struct DiskController{
 public:
 	DiskController();
 
-	void read_data(long long int addr,char data[DATA_SIZE]);
-	void write_data(long long int addr,char data[DATA_SIZE]);
+	void read_data(int addr,char data[DATA_SIZE],int time);
+	void write_data(int addr,char data[DATA_SIZE],int time);
 };

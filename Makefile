@@ -1,9 +1,9 @@
 CPPFLAGS=-I/usr/local/include
 
 BIN2=simulator
-#SRCS2=main.cpp DiskController.cpp Cache.cpp HardDisk.cpp Platter.cpp Sector.cpp Track.cpp Statistics.cpp 
-SRCS2=main.cpp HardDisk.cpp Platter.cpp Sector.cpp Track.cpp Statistics.cpp 
-INCLUDES=DiskController.hpp Cache.hpp HardDisk.hpp Platter.hpp Sector.hpp Track.hpp Statistics.hpp 
+SRCS2=main.cpp DiskController.cpp Cache.cpp HardDisk.cpp Platter.cpp Sector.cpp Track.cpp Statistics.cpp 
+#SRCS2=main.cpp HardDisk.cpp Platter.cpp Sector.cpp Track.cpp Statistics.cpp 
+INCLUDES=DiskController.hpp Cache.hpp HardDisk.hpp Platter.hpp Sector.hpp Track.hpp Statistics.hpp sizes.hpp 
 
 all: $(BIN2)
 

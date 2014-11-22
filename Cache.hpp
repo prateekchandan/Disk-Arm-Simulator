@@ -12,4 +12,5 @@ public:
 	Cache();
 	bool read(long long int address,char data_incoming[DATA_SIZE]);
 	void update(long long int address,char data_incoming[DATA_SIZE]);
+	void clear();
 };
