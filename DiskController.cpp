@@ -101,3 +101,11 @@ void DiskController::write_data(int addr,char data[DATA_SIZE],int tim){
 	h_copy[disk_no].add_operation(tim,1,data,platter_no,track_no,sector_no);
 	cache.update(addr,data);
 }
+
+void DiskController::update(){
+	for (int i = 0; i < TOTAL_DISK; ++i)
+	{
+		h[i].update();
+		h_copy[i].update();
+	}
+}

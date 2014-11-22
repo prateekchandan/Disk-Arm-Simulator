@@ -13,4 +13,6 @@ public:
 
 	void read_data(int addr,char data[DATA_SIZE],int time);
 	void write_data(int addr,char data[DATA_SIZE],int time);
+
+	void update();
 };
