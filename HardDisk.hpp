@@ -9,9 +9,10 @@ struct buffer_entry{
 	int track_no;
 	int sector_no;
 	char * data;
+	int logical_address;
 
 	buffer_entry();
-	buffer_entry(int tm, int rw, int p, int t, int s, char * d);
+	buffer_entry(int tm, int rw, int p, int t, int s, char * d, int la);
 };
 
 
@@ -22,7 +23,7 @@ struct Buffer{
 
 	Buffer();
 
-	void add_entry(int, int, int, int, int, char *);
+	void add_entry(int, int, int, int, int, char *, int);
 	int give_next(int);
 };
 
@@ -65,9 +66,9 @@ public:
 
 	bool write_data(char*, int, int, int);
 
-	bool read_data(char *, int, int, int);
+	bool read_data(char *, int, int, int, int);
 
-	bool add_operation(int, int, char *, int, int, int);
+	bool add_operation(int, int, char *, int, int, int, int);
 
 	bool operate();
 	

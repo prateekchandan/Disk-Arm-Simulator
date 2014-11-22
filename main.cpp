@@ -14,16 +14,17 @@ int main(int argc, char const *argv[])
 	strcpy(c,"Hello I am an Indian");
 	int next_op = 0;
 	cin >> next_op;
-	for(timer = 0; timer < 100; timer++) {
+	for(timer = 0; timer < 100000; timer++) {
 		if(next_op == timer){
 			int addr, rw;
 			cin >> addr >> rw;
 			//cout << addr << " " << rw << endl;
-			if(rw == 0) disk.read_data(98354,c,timer);
+			if(rw == 0) cerr << rw << endl;
+			if(rw == 0) disk.read_data(addr,c,timer);
 			if(rw == 1) {
 				cin.getline(c, 512);
 				cin.getline(c, 512);
-				disk.write_data(98354,c,timer);
+				disk.write_data(addr,c,timer);
 			}
 			cin >> next_op;
 		}

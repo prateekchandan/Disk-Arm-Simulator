@@ -2,3 +2,5 @@
 output*
 simulator
 .*.swo
+err
+test
