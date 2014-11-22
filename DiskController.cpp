@@ -105,7 +105,7 @@ void DiskController::write_data(int addr,char data[DATA_SIZE],int tim){
 void DiskController::update(){
 	for (int i = 0; i < TOTAL_DISK; ++i)
 	{
-		h[i].update();
-		h_copy[i].update();
+		h[i].operate();
+		h_copy[i].operate();
 	}
 }
