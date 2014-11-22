@@ -49,10 +49,11 @@ void Statistics::add_write_latency(int l) {
 }
 
 void Statistics::print_stats() {
-	cout << "current rotational latency : " << cur_rot_latency << endl;
-	cout << "current seek time :          " << cur_seek << endl;
-	cout << "current write latency :      " << cur_write_latency << endl;
-	cout << "cumulative rotational latency : " << cum_rot_latency << endl;
-	cout << "cumulative seek time :          " << cum_seek << endl;
-	cout << "cumulative write latency :      " << cum_write_latency << endl;
+	cerr << "rotational latency : " << cur_rot_latency << endl;
+	cerr << "seek time :          " << cur_seek << endl;
+	cerr << "write latency :      " << cur_write_latency << endl;
+	cerr << "total time :         " << cur_tot_time << endl;
+	//cerr << "cumulative rotational latency : " << cum_rot_latency << endl;
+	//cerr << "cumulative seek time :          " << cum_seek << endl;
+	//cerr << "cumulative write latency :      " << cum_write_latency << endl;
 }

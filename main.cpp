@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 	strcpy(c,"Hello I am an Indian");
 	int next_op = 0;
 	cin >> next_op;
-	for(timer = 0; timer < 100000; timer++) {
+	for(timer = 0; timer < 1000000; timer++) {
 		if(next_op == timer){
 			int addr, rw;
 			cin >> addr >> rw;
@@ -27,6 +27,11 @@ int main(int argc, char const *argv[])
 				disk.write_data(addr,c,timer);
 			}
 			cin >> next_op;
+			while(next_op == -1) {
+				cerr << timer << endl << "======================" << endl;
+				disk.print_stats();
+				cin >> next_op;
+			}
 		}
 		//cout << timer << endl;
 		//cerr << timer << endl;

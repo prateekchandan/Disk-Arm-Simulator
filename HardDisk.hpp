@@ -71,6 +71,8 @@ public:
 	bool add_operation(int, int, char *, int, int, int, int);
 
 	bool operate();
+
+	void print_stats();
 	
 	
 };

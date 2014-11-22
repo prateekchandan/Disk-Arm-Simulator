@@ -27,16 +27,19 @@ HardDisk::HardDisk(int * t){
 bool HardDisk::write_data(char * d, int p, int t, int s) {
 	//cerr << "writing" << endl;
 	//cout << *timer << " ";
-	cerr << p << " " << t << " " << s << endl;
+	cerr << "writing " << p << " " << t << " " << s << endl;
 	return platters[p].write_data(d, t, s);
 }
 
 bool HardDisk::read_data(char * d, int p, int t, int s, int la) {
 	cout << *timer << " " << la << " ";
+	cerr << "reading " << p << " " << t << " " << s << endl;
 	return platters[p].read_data(d, t, s);
 }
 
 bool HardDisk::add_operation(int tm, int op, char * d, int p, int t, int s, int la) {
+	//for(set<buffer_entry>::iterator it = buffer.content.begin(); it != buffer.content.end(); it++) cerr << "buffer : " << it->sector_no << endl;
+	//cerr << p << " " << t << " " << s << endl;
 	//cerr << "adding operation" << endl;
 	buffer.add_entry(tm, op, p, t, s, d, la);
 }
@@ -65,6 +68,10 @@ bool HardDisk::operate() {
 	}
 }
 
+void HardDisk::print_stats() {
+	stats->print_stats();
+}
+
 
 buffer_entry::buffer_entry(){};
 buffer_entry::buffer_entry(int tm, int rw, int p, int t, int s, char * d, int la) { 
@@ -73,6 +80,7 @@ buffer_entry::buffer_entry(int tm, int rw, int p, int t, int s, char * d, int la
 	platter_no = p;
 	track_no = t;
 	data = d;
+	sector_no = s;
 	logical_address = la;
 }
 
