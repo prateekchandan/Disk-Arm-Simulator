@@ -5,6 +5,7 @@
 
 using namespace std;
 
+int cache_on = 0;
 DiskController::DiskController(){
 	
 }
@@ -22,7 +23,7 @@ void DiskController::read_data(int addr,char data[DATA_SIZE],int tim){
 		cout<<addr<<" Error in Address :Read Operation Failed"<<endl;
 		return;
 	}
-	if(cache.read(addr,data)){
+	if(cache_on && cache.read(addr,data)){
 		cout<<addr<<" "<<data<<endl;
 		return;
 	}
