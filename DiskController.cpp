@@ -9,11 +9,12 @@ DiskController::DiskController(){
 	
 }
 
-void DiskController::read_data(long long int addr,char data[DATA_SIZE]){
+void DiskController::read_data(long long int addr,char data[DATA_SIZE],int tim){
 	
-	srand (time(NULL));
+	srand(time(NULL));
 
 	int disk_no=addr/DISK_SIZE;
+	cout<<DISK_SIZE<<" - "<<addr<<" "<<(addr/DISK_SIZE)<<endl;
 	if(disk_no<0 || disk_no >= TOTAL_DISK){
 		cout<<addr<<" Error:Read Operation Failed"<<endl;
 		return;
@@ -25,8 +26,26 @@ void DiskController::read_data(long long int addr,char data[DATA_SIZE]){
 
 	cout<<addr<<" ";
 
+	int address_in_disk=addr%DISK_SIZE;
+	int platter_no=address_in_disk/PLATTER_SIZE;
+	int address_in_platter=address_in_disk/PLATTER_SIZE;
+	int track_no;
+	for (int i = 0; i < NO_TRACKS; ++i)
+	{
+		if(address_in_platter>= (NO_SECTORS_MIN+i)){
+			address_in_platter-=i;
+			address_in_platter-=NO_SECTORS_MIN;
+		}
+		else{
+			track_no=i;
+			break;
+		}
+	}
+	int sector_no=address_in_platter;
+
+	cout<<addr<<" => "<<disk_no<<" : "<<platter_no<<" : "<<track_no<<" : "<<sector_no<<endl;
 	if(rand() % 2 ==0){
-		// Read from h_disk
+		//h[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no);
 	}
 	else{
 		// Read from mirrored Disk
@@ -37,7 +56,7 @@ void DiskController::read_data(long long int addr,char data[DATA_SIZE]){
 
 }
 
-void DiskController::write_data(long long int addr,char data[DATA_SIZE]){
+void DiskController::write_data(long long int addr,char data[DATA_SIZE],int tim){
 	srand (time(NULL));
 
 	int disk_no=addr/DISK_SIZE;

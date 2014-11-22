@@ -55,3 +55,10 @@ void Cache::update(long long int address,char data_incoming[DATA_SIZE]){
 	}
 	
 }
+
+void Cache::clear(){
+	for (int i = 0; i < CACHE_SIZE; ++i)
+	{
+		valid[i]=0;
+	}
+}
