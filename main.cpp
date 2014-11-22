@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
 	for(int i = 0; i < 100; i++) {
 		cout << i << endl;
 		if(next_op == i){
-		cout << i << endl;
+			cout << i << endl;
 			int addr, rw;
 			cin >> addr >> rw;
 			cout << addr << " " << rw << endl;
@@ -23,7 +23,6 @@ int main(int argc, char const *argv[])
 			if(rw == 1) {
 				cin.getline(c, 512);
 				cin.getline(c, 512);
-				cout << c << endl;
 				disk.write_data(98354,c,i);
 			}
 			cin >> next_op;
