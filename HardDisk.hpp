@@ -1,5 +1,4 @@
 #include "Platter.hpp"
-#include <set>
 using namespace std;
 
 struct HardDisk
@@ -44,27 +43,16 @@ struct buffer_entry{
 	int sector_no;
 	char * data;
 
-	buffer_entry() {};
-	buffer_entry(int rw, int p, int t, int s, char * d) {
-		read_or_write = rw;
-		platter_no = p;
-		track_no = t;
-		sector_no = s;
-		data = d;
-	}
+	buffer_entry();
+	buffer_entry(int rw, int p, int t, int s, char * d);
 };
 
-bool operator<(buffer_entry a, buffer_entry b) {
-	return a.track_no < b.track_no;
-}
+
 
 struct buffer{
 	set<buffer_entry> content;
 
-	buffer() {};
+	buffer();
 
-	void addEntry(int rw, int p, int t, int s, char * d) {
-		buffer_entry be = *(new buffer_entry(rw, p, t, s, d));
-		this->content.insert(be);
-	}
+	void addEntry(int rw, int p, int t, int s, char * d);
 };
