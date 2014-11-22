@@ -59,33 +59,81 @@ void Buffer::add_entry(int tm, int rw, int p, int t, int s, char * d) {
 }
 
 buffer_entry Buffer::give_next(int direction) {
+	if(current  == content.end()) {
+		current = content.begin();
+		return *current;
+	}
 	if(content.size() == 1){
 		set<buffer_entry>::iterator temp = current;
 		current++;
 		content.erase(current);
 		return *current;
 	}
-	if(current  == content.end()) {
-		cout << "here" << endl;
-		current = content.begin();
-		return *current;
-	}
 	if(direction == 1) {
 		if(distance(current, content.end()) == 1)  direction = -1;
+		else {
+			set<buffer_entry>::iterator temp = current;
+			current++;
+			content.erase(temp);
+			return *current;
+		}
 	}
-	else if(direction == -1) {
-		if(current == content.begin()) direction = 1;
-	}
-	if(direction == 1) {
+	if(direction == -1) {
+		if(current == content.begin()) {
+			set<buffer_entry>::iterator temp = current;
+			current++;
+			content.erase(temp);
+			return *current;
+		}
 		set<buffer_entry>::iterator temp = current;
-		current++;
-		content.erase(temp);
-		return *current;
+		temp++;
+		if(temp == content.end() || current->track_no != temp->track_no) {
+			temp = current;
+			current--;
+			content.erase(temp);
+			temp = current;
+			temp--;
+			if(current->track_no == content.begin()->track_no) {
+				current = content.begin();
+				return *current;
+			}
+			else{
+				while(temp->track_no == current->track_no){
+					temp--;
+				}
+				return *current;
+			}
+		}
+		else {
+			set<buffer_entry>::iterator temp = current;
+			current++;
+			content.erase(temp);
+			return *current;
+		}
 	}
-	else if(direction == -1) {
-		set<buffer_entry>::iterator temp = current;
-		current--;
-		content.erase(temp);
-		return *current;
-	}
+	/*
+	 *if(current  == content.end()) {
+	 *    cout << "here" << endl;
+	 *    current = content.begin();
+	 *    return *current;
+	 *}
+	 *if(direction == 1) {
+	 *    if(distance(current, content.end()) == 1)  direction = -1;
+	 *}
+	 *else if(direction == -1) {
+	 *    if(current == content.begin()) direction = 1;
+	 *}
+	 *if(direction == 1) {
+	 *    set<buffer_entry>::iterator temp = current;
+	 *    current++;
+	 *    content.erase(temp);
+	 *    return *current;
+	 *}
+	 *else if(direction == -1) {
+	 *    set<buffer_entry>::iterator temp = current;
+	 *    current--;
+	 *    content.erase(temp);
+	 *    return *current;
+	 *}
+	 */
 }
