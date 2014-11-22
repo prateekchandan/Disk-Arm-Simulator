@@ -9,7 +9,7 @@ struct DiskController{
 	Cache cache;
 	
 public:
-	DiskController();
+	DiskController(int*);
 
 	void read_data(int addr,char data[DATA_SIZE],int time);
 	void write_data(int addr,char data[DATA_SIZE],int time);

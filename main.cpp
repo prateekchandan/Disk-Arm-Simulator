@@ -7,7 +7,9 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	DiskController disk;
+	int timer=0;
+	DiskController disk(&timer);
+
 	char c[512];
 	strcpy(c,"Hello I am an Indian");
 	int next_op = 0;

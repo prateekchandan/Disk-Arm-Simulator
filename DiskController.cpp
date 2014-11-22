@@ -6,8 +6,12 @@
 using namespace std;
 
 int cache_on = 0;
-DiskController::DiskController(){
-	
+DiskController::DiskController(int *t){
+	for (int i = 0; i < TOTAL_DISK; ++i)
+	{
+		h[i] =*(new HardDisk(t));
+		h_copy[i]=*(new HardDisk(t));
+	}
 }
 
 void DiskController::read_data(int addr,char data[DATA_SIZE],int tim){
