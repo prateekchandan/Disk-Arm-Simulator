@@ -16,9 +16,9 @@ void DiskController::read_data(long long int addr,char data[DATA_SIZE]){
 	int disk_no=addr/DISK_SIZE;
 	if(disk_no<0 || disk_no >= TOTAL_DISK){
 		cout<<addr<<" Error:Read Operation Failed"<<endl;
-		return
+		return;
 	}
-	if(Cache.read(addr,data[DATA_SIZE])){
+	if(cache.read(addr,data)){
 		cout<<addr<<" "<<data<<endl;
 		return;
 	}
@@ -43,7 +43,7 @@ void DiskController::write_data(long long int addr,char data[DATA_SIZE]){
 	int disk_no=addr/DISK_SIZE;
 	if(disk_no<0 || disk_no >= TOTAL_DISK){
 		cout<<addr<<" Error:Read Operation Failed"<<endl;
-		return
+		return;
 	}
 
 	// Write in disk
