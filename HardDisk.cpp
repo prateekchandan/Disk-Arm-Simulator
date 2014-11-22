@@ -25,12 +25,12 @@ HardDisk::HardDisk(int * t){
 }
 
 bool HardDisk::write_data(char * d, int p, int t, int s) {
-	cout << *timer << " ";
+	//cout << *timer << " ";
 	return platters[p].write_data(d, t, s);
 }
 
 bool HardDisk::read_data(char * d, int p, int t, int s) {
-	cout << *timer << " ";
+	//cout << *timer << " ";
 	return platters[p].read_data(d, t, s);
 }
 
@@ -51,7 +51,7 @@ bool HardDisk::operate() {
 		if(output == 0) return false;
 		arm_direction = output;
 		int prev_stat_time = stats->cur_tot_time;
-		cout << buffer.current->time << endl;
+		//cout << buffer.current->time << endl;
 		if(buffer.current->track_no != prev_track) stats->add_seek(1);
 		if(buffer.current->read_or_write == 0) read_data(buffer.current->data, buffer.current->platter_no, buffer.current->track_no, buffer.current->sector_no);
 		else if(buffer.current->read_or_write == 1) write_data(buffer.current->data, buffer.current->platter_no, buffer.current->track_no, buffer.current->sector_no);
