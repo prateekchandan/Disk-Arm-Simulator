@@ -56,10 +56,10 @@ void DiskController::read_data(int addr,char data[DATA_SIZE],int tim){
 
 
 	if(rand() % 2 ==0){
-		h[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no);
+		h[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no,addr);
 	}
 	else{
-		h_copy[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no);
+		h_copy[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no,addr);
 	}
 
 	// Updated data
@@ -101,8 +101,8 @@ void DiskController::write_data(int addr,char data[DATA_SIZE],int tim){
 	int sector_no=address_in_platter;
 
 	// Write in mirrored disk
-	h[disk_no].add_operation(tim,1,data,platter_no,track_no,sector_no);
-	h_copy[disk_no].add_operation(tim,1,data,platter_no,track_no,sector_no);
+	h[disk_no].add_operation(tim,1,data,platter_no,track_no,sector_no,addr);
+	h_copy[disk_no].add_operation(tim,1,data,platter_no,track_no,sector_no,addr);
 	cache.update(addr,data);
 }
 
