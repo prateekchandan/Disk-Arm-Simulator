@@ -27,7 +27,7 @@ HardDisk::HardDisk(int * t){
 bool HardDisk::write_data(char * d, int p, int t, int s) {
 	//cerr << "writing" << endl;
 	//cout << *timer << " ";
-	//cout << p << " " << t << " " << s << endl;
+	cerr << p << " " << t << " " << s << endl;
 	return platters[p].write_data(d, t, s);
 }
 

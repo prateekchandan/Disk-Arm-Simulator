@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
 			int addr, rw;
 			cin >> addr >> rw;
 			//cout << addr << " " << rw << endl;
-			if(rw == 0) cerr << rw << endl;
+			//if(rw == 0) cerr << rw << endl;
 			if(rw == 0) disk.read_data(addr,c,timer);
 			if(rw == 1) {
 				cin.getline(c, 512);
@@ -29,6 +29,7 @@ int main(int argc, char const *argv[])
 			cin >> next_op;
 		}
 		//cout << timer << endl;
+		//cerr << timer << endl;
 		disk.update();
 		//cout << timer << endl;
 	}
