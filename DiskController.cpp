@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int cache_on = 0;
+int cache_on = 1;
 DiskController::DiskController(int *t){
 	for (int i = 0; i < TOTAL_DISK; ++i)
 	{
