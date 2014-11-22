@@ -26,6 +26,7 @@ HardDisk::HardDisk(int * t){
 
 bool HardDisk::write_data(char * d, int p, int t, int s) {
 	//cout << *timer << " ";
+	cout << p << " " << t << " " << s << endl;
 	return platters[p].write_data(d, t, s);
 }
 
@@ -39,7 +40,6 @@ bool HardDisk::add_operation(int tm, int op, char * d, int p, int t, int s) {
 }
 
 bool HardDisk::operate() {
-		//cout << "next " << next_op_time << " " << *timer << endl;
 	if(buffer.content.size() == 0){
 		next_op_time++;
 		return false;

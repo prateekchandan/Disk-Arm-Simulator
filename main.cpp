@@ -10,9 +10,26 @@ int main(int argc, char const *argv[])
 	DiskController disk;
 	char c[512];
 	strcpy(c,"Hello I am an Indian");
-	disk.write_data(98354,c,1);
-	disk.read_data(98354,c,2);
-	disk.read_data(98354,c,2);
+	int next_op = 0;
+	cin >> next_op;
+	for(int i = 0; i < 100; i++) {
+		cout << i << endl;
+		if(next_op == i){
+		cout << i << endl;
+			int addr, rw;
+			cin >> addr >> rw;
+			cout << addr << " " << rw << endl;
+			if(rw == 0) disk.read_data(98354,c,i);
+			if(rw == 1) {
+				cin.getline(c, 512);
+				cin.getline(c, 512);
+				cout << c << endl;
+				disk.write_data(98354,c,i);
+			}
+			cin >> next_op;
+		}
+		disk.update();
+	}
 	return 0;
 
 
