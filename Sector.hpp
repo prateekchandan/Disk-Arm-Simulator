@@ -1,6 +1,7 @@
 #include "pflayer/pf.h"
 #include <cstring>
 #include "Statistics.hpp"
+#include "sizes.hpp"
 struct Sector
 {
 	int sector_no;

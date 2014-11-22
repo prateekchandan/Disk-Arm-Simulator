@@ -1,2 +1,5 @@
 .*.swp
+output*
+simulator
 .*.swo
+main.cpp

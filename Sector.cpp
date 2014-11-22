@@ -7,25 +7,25 @@ void Sector::writefile(){
 
 
 Sector::Sector() {
-	size = 512;
+	size = DATA_SIZE;
 	data = new char[size];
 }
 
 Sector::Sector(int n, Statistics * s) {
 	sector_no = n;
-	size = 512;
+	size = DATA_SIZE;
 	data = new char[size];
 	stats = s;
 }
 
 void Sector::_assign(char * d) {
-	for (int i = 0; i < 512; i++) {
+	for (int i = 0; i < size; i++) {
 		data[i] = d[i];
 	}
 }
 
 void Sector::_copy(char * d) {
-	for (int i = 0; i < 512; i++) {
+	for (int i = 0; i < size; i++) {
 		d[i] = data[i];
 	}
 }

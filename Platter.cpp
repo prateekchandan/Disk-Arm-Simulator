@@ -3,14 +3,14 @@
 using namespace std;
 
 Platter::Platter(){
-	size = 100;
+	size = NO_TRACKS;
 	tracks = new Track[size];
 }
 
 
 Platter::Platter(int n, Statistics * s){
 	platter_no = n;
-	size = 100;
+	size = NO_TRACKS;
 	stats = s;
 	tracks = new Track[size];
 	for (int i = 0; i < size; i++) {

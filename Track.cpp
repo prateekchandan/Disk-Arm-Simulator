@@ -4,13 +4,13 @@ using namespace std;
 
 Track::Track(){
 	track_no = 0;
-	size = 50;
+	size = NO_SECTORS_MIN;
 	sectors = new Sector[size];
 }
 
 Track::Track(int n, Statistics * s) {
 	track_no = n;
-	size = track_no/2+50;
+	size = NO_SECTORS_MIN+track_no;
 	sectors = new Sector[size];
 	stats = s;
 	for(int i = 0; i < size; i++) {
