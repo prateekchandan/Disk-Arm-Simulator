@@ -1,11 +1,11 @@
 #include "sizes.hpp"
 #include <vector>
 
-using namespace std;
+const int CACHE_SIZE=999;
 class Cache
 {
 	bool valid[CACHE_SIZE];					// To store if a bit is valid
-	vector<long long int> addr(CACHE_SIZE);		//To store all the addresses
+	std::vector<long long int> addr;		//To store all the addresses
 	char data[CACHE_SIZE][DATA_SIZE];		// TO store data in cache
 
 public:
