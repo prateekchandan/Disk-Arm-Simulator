@@ -34,10 +34,13 @@ void Sector::_copy(char * d) {
 bool Sector::write_data(char *d) {
 	_assign(d);
 	stats->add_write_latency(1);
+	cout << "Data written" << endl;
 	return true;
 }
 
 bool Sector::read_data(char *d) {
 	_copy(d);
+	for (int i = 0; i < 512; i++) cout << data[i];
+	cout << endl;
 	return true;
 }

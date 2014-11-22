@@ -23,7 +23,7 @@ struct Buffer{
 	Buffer();
 
 	void add_entry(int, int, int, int, int, char *);
-	buffer_entry give_next(int);
+	int give_next(int);
 };
 
 struct HardDisk
@@ -45,6 +45,12 @@ struct HardDisk
 
 	int * timer;
 
+	// Direction of movement of Arm
+	int arm_direction;
+
+	// time for the next operation
+	int next_op_time;
+
 	// Buffer for the hard DISK
 	Buffer buffer;
 
@@ -62,6 +68,8 @@ public:
 	bool read_data(char *, int, int, int);
 
 	bool add_operation(int, int, char *, int, int, int);
+
+	bool operate();
 	
 	
 };
