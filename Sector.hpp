@@ -2,6 +2,7 @@
 #include <cstring>
 #include "Statistics.hpp"
 #include "sizes.hpp"
+#include <iostream>
 struct Sector
 {
 	int sector_no;

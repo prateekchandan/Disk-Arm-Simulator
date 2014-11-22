@@ -1,4 +1,5 @@
 #include "Sector.hpp"
+using namespace std;
 
 
 void Sector::writefile(){

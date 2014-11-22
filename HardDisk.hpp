@@ -1,5 +1,30 @@
 #include "Platter.hpp"
+#include <set>
 using namespace std;
+
+struct buffer_entry{
+	int time;
+	int read_or_write;
+	int platter_no;
+	int track_no;
+	int sector_no;
+	char * data;
+
+	buffer_entry();
+	buffer_entry(int tm, int rw, int p, int t, int s, char * d);
+};
+
+
+
+struct Buffer{
+	set<buffer_entry> content;
+	set<buffer_entry>::iterator current;
+
+	Buffer();
+
+	void add_entry(int, int, int, int, int, char *);
+	buffer_entry give_next(int);
+};
 
 struct HardDisk
 {
@@ -20,6 +45,9 @@ struct HardDisk
 
 	int * timer;
 
+	// Buffer for the hard DISK
+	Buffer buffer;
+
 	// Statistics object
 	Statistics *stats;
 
@@ -32,27 +60,9 @@ public:
 	bool write_data(char*, int, int, int);
 
 	bool read_data(char *, int, int, int);
+
+	bool add_operation(int, int, char *, int, int, int);
 	
 	
 };
 
-struct buffer_entry{
-	int read_or_write;
-	int platter_no;
-	int track_no;
-	int sector_no;
-	char * data;
-
-	buffer_entry();
-	buffer_entry(int rw, int p, int t, int s, char * d);
-};
-
-
-
-struct buffer{
-	set<buffer_entry> content;
-
-	buffer();
-
-	void addEntry(int rw, int p, int t, int s, char * d);
-};
