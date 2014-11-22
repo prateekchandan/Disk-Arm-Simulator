@@ -6,7 +6,7 @@ struct DiskController{
 	HardDisk h[4];
 	HardDisk h_copy[4];
 
-	Cache cache;
+	//Cache cache;
 	
 public:
 	DiskController();
