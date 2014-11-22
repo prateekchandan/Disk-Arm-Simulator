@@ -41,6 +41,6 @@ bool Sector::write_data(char *d) {
 bool Sector::read_data(char *d) {
 	_copy(d);
 	for (int i = 0; i < 512; i++) cout << data[i];
-	//cout << endl;
+	cout << endl;
 	return true;
 }

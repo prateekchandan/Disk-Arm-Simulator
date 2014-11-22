@@ -11,6 +11,8 @@ DiskController::DiskController(int *t){
 	{
 		h[i] =*(new HardDisk(t));
 		h_copy[i]=*(new HardDisk(t));
+		h[i].buffer.current = h[i].buffer.content.end();
+		h_copy[i].buffer.current = h_copy[i].buffer.content.end();
 	}
 }
 
