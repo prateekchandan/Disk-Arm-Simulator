@@ -9,14 +9,17 @@ DiskController::DiskController(){
 	
 }
 
-void DiskController::read_data(long long int addr,char data[DATA_SIZE],int tim){
+void DiskController::read_data(int addr,char data[DATA_SIZE],int tim){
 	
 	srand(time(NULL));
 
-	int disk_no=addr/DISK_SIZE;
-	cout<<DISK_SIZE<<" - "<<addr<<" "<<(addr/DISK_SIZE)<<endl;
+	// DEMULTIPLEXING
+	int disk_size=DISK_SIZE;
+	int platter_size=PLATTER_SIZE;
+	int disk_no=addr/disk_size;
+	
 	if(disk_no<0 || disk_no >= TOTAL_DISK){
-		cout<<addr<<" Error:Read Operation Failed"<<endl;
+		cout<<addr<<" Error in Address :Read Operation Failed"<<endl;
 		return;
 	}
 	if(cache.read(addr,data)){
@@ -24,48 +27,76 @@ void DiskController::read_data(long long int addr,char data[DATA_SIZE],int tim){
 		return;
 	}
 
-	cout<<addr<<" ";
 
-	int address_in_disk=addr%DISK_SIZE;
-	int platter_no=address_in_disk/PLATTER_SIZE;
-	int address_in_platter=address_in_disk/PLATTER_SIZE;
+	int address_in_disk=addr%disk_size;
+	int platter_no=address_in_disk/platter_size;
+	int address_in_platter=address_in_disk%platter_size;
 	int track_no;
+
 	for (int i = 0; i < NO_TRACKS; ++i)
 	{
-		if(address_in_platter>= (NO_SECTORS_MIN+i)){
-			address_in_platter-=i;
-			address_in_platter-=NO_SECTORS_MIN;
+		if(address_in_platter >= (NO_SECTORS_MIN+i)){
+			address_in_platter-=(NO_SECTORS_MIN+i);
 		}
 		else{
 			track_no=i;
 			break;
 		}
+
+
 	}
 	int sector_no=address_in_platter;
 
-	cout<<addr<<" => "<<disk_no<<" : "<<platter_no<<" : "<<track_no<<" : "<<sector_no<<endl;
+	cout<<addr<<" ";
+	// Read randomly from hard disk
 	if(rand() % 2 ==0){
-		//h[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no);
+		h[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no);
 	}
 	else{
-		// Read from mirrored Disk
+		h_copy[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no);
 	}
+
+	// Updated data
+	cache.update(addr,data);
 	cout<<endl;
 
 
 
 }
 
-void DiskController::write_data(long long int addr,char data[DATA_SIZE],int tim){
-	srand (time(NULL));
+void DiskController::write_data(int addr,char data[DATA_SIZE],int tim){
 
-	int disk_no=addr/DISK_SIZE;
+	// DEMULTIPLEXING
+	int disk_size=DISK_SIZE;
+	int platter_size=PLATTER_SIZE;
+	int disk_no=addr/disk_size;
+	
 	if(disk_no<0 || disk_no >= TOTAL_DISK){
-		cout<<addr<<" Error:Read Operation Failed"<<endl;
+		cout<<addr<<" Error in Address:Write Operation Failed "<<endl;
 		return;
 	}
 
-	// Write in disk
+	int address_in_disk=addr%disk_size;
+	int platter_no=address_in_disk/platter_size;
+	int address_in_platter=address_in_disk%platter_size;
+	int track_no;
+
+	for (int i = 0; i < NO_TRACKS; ++i)
+	{
+		if(address_in_platter >= (NO_SECTORS_MIN+i)){
+			address_in_platter-=(NO_SECTORS_MIN+i);
+		}
+		else{
+			track_no=i;
+			break;
+		}
+
+
+	}
+	int sector_no=address_in_platter;
 
 	// Write in mirrored disk
+	h[disk_no].add_operation(tim,1,data,platter_no,track_no,sector_no);
+	h_copy[disk_no].add_operation(tim,1,data,platter_no,track_no,sector_no);
+	cache.update(addr,data);
 }
