@@ -52,8 +52,7 @@ void DiskController::read_data(int addr,char data[DATA_SIZE],int tim){
 	}
 	int sector_no=address_in_platter;
 
-	cout<<addr<<" ";
-	// Read randomly from hard disk
+
 	if(rand() % 2 ==0){
 		h[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no);
 	}
@@ -63,8 +62,7 @@ void DiskController::read_data(int addr,char data[DATA_SIZE],int tim){
 
 	// Updated data
 	cache.update(addr,data);
-	cout<<endl;
-
+	
 
 
 }
