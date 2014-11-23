@@ -9,11 +9,11 @@ To run the project do a
 Note the Input Format :
 
 For Read :
-<time> <Logical Address>
+"time"  "Logical Address"
 
 For Write:
-<time> <Logical Address>
-<Data>
+"time" "Logical Address"
+"Data"
 
 For States
 -1
@@ -21,7 +21,7 @@ For States
 Note : the time sequence in the input file to be in increasing order
 
 To run the simulator do:
-** ./simulator <input_file >output 2>log **
+** ./simulator <input_file  >output  2>log **
 
 Team Details:
 
