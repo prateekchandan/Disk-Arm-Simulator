@@ -15,7 +15,7 @@ For Write:
 "time" "Logical Address"
 "Data"
 
-For States
+For States : 
 -1
 
 Note : the time sequence in the input file to be in increasing order
