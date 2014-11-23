@@ -15,4 +15,6 @@ public:
 	void write_data(int addr,char data[DATA_SIZE],int time);
 
 	void update();
+
+	void print_stats();
 };

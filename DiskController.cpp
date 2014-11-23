@@ -113,3 +113,18 @@ void DiskController::update(){
 		h_copy[i].operate();
 	}
 }
+
+void DiskController::print_stats(){
+	for (int i = 0; i < TOTAL_DISK; ++i)
+	{
+		cout<<"STATS FOR DISK "<<i+1<<" :  "<<endl;
+		h[i].print_stats();
+		cout<<endl;
+	}
+	for (int i = 0; i < TOTAL_DISK; ++i)
+	{
+		cout<<"STATS FOR DISK "<<i+1<<" :  "<<endl;
+		h_copy[i].print_stats();
+		cout<<endl;
+	}
+}
