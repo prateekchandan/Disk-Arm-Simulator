@@ -117,14 +117,14 @@ void DiskController::update(){
 void DiskController::print_stats(){
 	for (int i = 0; i < TOTAL_DISK; ++i)
 	{
-		cout<<"STATS FOR DISK "<<i+1<<" :  "<<endl;
+		cerr<<"STATS FOR DISK "<<i+1<<" :  "<<endl;
 		h[i].print_stats();
-		cout<<endl;
+		cerr<<endl;
 	}
 	for (int i = 0; i < TOTAL_DISK; ++i)
 	{
-		cout<<"STATS FOR DISK "<<i+1<<" :  "<<endl;
+		cerr<<"STATS FOR MIRRORED DISK "<<i+1<<" :  "<<endl;
 		h_copy[i].print_stats();
-		cout<<endl;
+		cerr<<endl;
 	}
 }
