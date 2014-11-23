@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int cache_on = 1;
+int cache_on = 0;
 DiskController::DiskController(int *t){
 	for (int i = 0; i < TOTAL_DISK; ++i)
 	{
@@ -14,6 +14,7 @@ DiskController::DiskController(int *t){
 		h[i].buffer.current = h[i].buffer.content.end();
 		h_copy[i].buffer.current = h_copy[i].buffer.content.end();
 	}
+	timer = t;
 }
 
 void DiskController::read_data(int addr,char data[DATA_SIZE],int tim){
@@ -55,7 +56,7 @@ void DiskController::read_data(int addr,char data[DATA_SIZE],int tim){
 	int sector_no=address_in_platter;
 
 
-	if(rand() % 2 ==0){
+	if((*timer) % 2 ==0){
 		h[disk_no].add_operation(tim,0,data,platter_no,track_no,sector_no,addr);
 	}
 	else{

@@ -27,9 +27,9 @@ int main(int argc, char const *argv[])
 				disk.write_data(addr,c,timer);
 			}
 			cin >> next_op;
-			while(next_op == -1) {
+			if(next_op == -1) {
 				cerr << timer << endl << "======================" << endl;
-				disk.print_stats();
+				disk.print_stats(); 
 				cin >> next_op;
 			}
 		}

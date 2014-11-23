@@ -7,6 +7,8 @@ struct DiskController{
 	HardDisk h_copy[TOTAL_DISK];
 
 	Cache cache;
+
+	int *timer;
 	
 public:
 	DiskController(int*);

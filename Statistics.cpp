@@ -15,6 +15,8 @@ Statistics::Statistics() {
 	cur_seek = 0;
 	cur_write_latency= 0;
 	cur_tot_time = 0;
+	cur_writes = 0;
+	cur_reads = 0;
 }
 
 void Statistics::reinitialize_cur_stat() {
@@ -40,7 +42,13 @@ void Statistics::add_seek(int l) {
 	return;
 }
 
+void Statistics::add_read(int l) {
+	cur_reads+= l;
+	return;
+}
+
 void Statistics::add_write_latency(int l) {
+	cur_writes += l;
 	cur_write_latency += l;
 	cum_write_latency += l;
 	cum_tot_time += write_latency*l;
@@ -49,10 +57,11 @@ void Statistics::add_write_latency(int l) {
 }
 
 void Statistics::print_stats() {
-	cerr << "rotational latency : " << cur_rot_latency << endl;
-	cerr << "seek time :          " << cur_seek << endl;
-	cerr << "write latency :      " << cur_write_latency << endl;
-	cerr << "total time :         " << cur_tot_time << endl;
+	cerr << "no of seeks :           " << cur_seek << endl;
+	cerr << "no of block transfers : " << cur_write_latency << endl;
+	cerr << "no of reads :           " << cur_reads << endl;
+	cerr << "no of writes :          " << cur_writes << endl;
+	cerr << "total time :            "<< cur_tot_time << endl;
 	//cerr << "cumulative rotational latency : " << cum_rot_latency << endl;
 	//cerr << "cumulative seek time :          " << cum_seek << endl;
 	//cerr << "cumulative write latency :      " << cum_write_latency << endl;

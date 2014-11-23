@@ -12,6 +12,8 @@ struct Statistics {
 	int cur_seek;
 	int cur_write_latency;
 	double cur_tot_time;
+	int cur_writes;
+	int cur_reads;
 
 public:
 	Statistics();
@@ -21,6 +23,7 @@ public:
 	void add_rot_latency(double);
 	void add_seek(int);
 	void add_write_latency(int);
+	void add_read(int);
 
 	void print_stats();
 

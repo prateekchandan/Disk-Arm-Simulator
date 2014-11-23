@@ -40,6 +40,7 @@ bool Sector::write_data(char *d) {
 
 bool Sector::read_data(char *d) {
 	_copy(d);
+	stats->add_read(1);
 	for (int i = 0; i < 512; i++) cout << data[i];
 	cout << endl;
 	return true;
